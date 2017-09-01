@@ -73,27 +73,12 @@ void next_move (int posr, int posc,  vector <string> board) {
 
     Cell cell = findClosestDirt (posr, posc, board);
     int distr = posr - cell.row;
-    int mr = abs(distr);
     int distc = posc - cell.col;
-    int mc = abs(distc);
-    if ( distr < 0) {
-        moveDown();
-        return;
-    }
-    if ( distr > 0) {
-        moveUp();
-        return;
-    }
 
-    if (distc < 0) {
-        moveRight();
-        return;
-    }
-
-    if (distc > 0) {
-        moveLeft();
-        return;
-    }
+    if ( distr < 0) moveDown();
+    else if ( distr > 0) moveUp();
+    else if (distc < 0) moveRight();
+    else if (distc > 0) moveLeft();
 }
 int main(void) {
     int pos[2];
@@ -106,4 +91,5 @@ int main(void) {
     next_move(pos[0], pos[1], board);
     return 0;
 }
+
 
